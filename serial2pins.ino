@@ -41,7 +41,7 @@ class SerialToPins {
       if (Serial.available() > 0) {
         char x = Serial.read();
         
-        if (x == ']') {
+        if (x == closeChar) {
           readInProgress = false;
           newData = true;
           inputBuffer[bytesRecvd] = 0;
@@ -55,7 +55,7 @@ class SerialToPins {
           }
         }
 
-        if (x == '[') {
+        if (x == openChar) {
           bytesRecvd = 0;
           readInProgress = true;
         }
